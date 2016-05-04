@@ -1,0 +1,18 @@
+doctype
+html
+  head
+    title #{title} - My Site
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet" href="http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css")
+    script(src="https://cdn.socket.io/socket.io-1.4.5.js")
+    script(src="http://code.jquery.com/jquery-1.9.1.min.js")
+  body
+    header
+      h1 My Site
+    .container
+      .main-content
+        block content
+      .sidebar
+        block sidebar
+    footer
+      p Running on node with Express, Jade and Stylus

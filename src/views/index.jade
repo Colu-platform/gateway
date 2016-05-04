@@ -1,0 +1,18 @@
+extend layout
+block content
+  script.
+      var socket = io.connect('http://localhost:9999', {path:'/notifications',  query: 'token=1234'})
+      socket.on('message', function (data) {
+         $("#messageArea").append(data+ '</br>')
+         console.log(data)
+      })
+  p#messageArea
+block sidebar
+  .widget
+    h1 Widget
+    p
+      | Sed auctor neque eu tellus rhoncus ut
+      | eleifend nibh porttitor. Ut in nulla enim.
+    p
+      | Vivamus hendrerit arcu sed erat molestie
+      | vehicula.
