@@ -64,6 +64,11 @@ module.exports = (function () {
 
   var consumer = new pubsub.Consumer(config.get('consumer'))
   consumer.create(app)
+  consumer.addVerification('socket', function(message, callback){
+    if(!message.title || !message.text || !message.to)
+      return callback(new Error('must contain: title, text, to'))
+    callback(null, message)
+  })
   consumer.on('newjob', function(job, done){
      if(job.data.type == 'socket') {
        io.to(job.data.to).emit('message', job.data.text)
